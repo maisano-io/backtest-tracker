@@ -126,6 +126,8 @@ export default function BacktestTracker() {
 
   const metrics = calculateMetrics()
 
+  const formatTooltip = (value: number) => `$${value.toFixed(2)}`;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-4 sm:p-8">
       <Card className="w-full max-w-4xl mx-auto bg-gray-800 text-white">
@@ -229,7 +231,7 @@ export default function BacktestTracker() {
               <LineChart data={balanceHistory}>
                 <XAxis dataKey="time" />
                 <YAxis width={50} />
-                <Tooltip />
+                <Tooltip formatter={formatTooltip} />
                 <Line type="monotone" dataKey="balance" stroke="#8884d8" />
               </LineChart>
             </ResponsiveContainer>
